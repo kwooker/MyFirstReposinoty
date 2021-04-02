@@ -1,2 +1,2 @@
 # MyFirstReposinoty
-master commit for conflict
+developer commit for conflict
