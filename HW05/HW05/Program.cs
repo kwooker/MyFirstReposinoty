@@ -31,7 +31,7 @@ namespace HW05
             Console.Write("Введите фамилию: ");
             string lastName = ValidateString();
             Console.Write("Введите возраст: ");
-            int age = ValidateByte();
+            byte age = ValidateByte();
             Console.Write("Есть наличие питомца?: ");
             var pets = FillArrayAttribute();
             Console.Write("Есть любимые цвета?: ");
@@ -43,7 +43,7 @@ namespace HW05
             if (CheckBooleanAnswer())
             {
                 Console.Write($"Введите количество: ");
-                int count = ValidateByte();
+                int count = ValidateNumeric();
                 string[] name = new string[count];
                 Console.WriteLine("Введите имена/названия: ");
                 for (int i = 0; i < count; i++)
@@ -68,8 +68,18 @@ namespace HW05
             } while (true);
         }
 
-        // ну не может быть у человека питомцев > 255
-        static int ValidateByte()
+        static int ValidateNumeric()
+        {
+            do
+            {
+                Int32.TryParse(Console.ReadLine(), out int value);
+                if (value > 0)
+                    return value;
+                Console.WriteLine("Введено некорректное значение!");
+            } while (true);
+        }
+
+        static byte ValidateByte()
         {
             do
             {
